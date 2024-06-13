@@ -1,6 +1,6 @@
 {
-  "name": "msw-trpc",
-  "version": "2.0.0-beta.1",
+  "name": "@getbread/msw-trpc",
+  "version": "1.0.0",
   "description": "Trpc API for Mock Service Worker (MSW).",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,22 +9,21 @@
     "test": "tsc --noEmit && vitest --run",
     "build": "rimraf dist && tsc -p tsconfig.build.json"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/maloguertin/msw-trpc.git"
+  "repository": "git://github.com/kenny-grubb/msw-trpc",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "msw",
     "trpc",
     "testing",
     "api"
   ],
-  "author": "Malo Guertin",
+  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/maloguertin/msw-trpc/issues"
-  },
-  "homepage": "https://github.com/maloguertin/msw-trpc#readme",
   "devDependencies": {
     "@trpc/client": "11.0.0-rc.351",
     "@trpc/react-query": "11.0.0-rc.351",

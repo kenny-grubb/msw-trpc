@@ -1,19 +1,26 @@
 {
   "compilerOptions": {
+    /* Based on https://github.com/total-typescript/tsconfig */
+    /* Base Options: */
     "outDir": "dist",
-    "target": "ES2017",
-    "module": "commonjs",
-    "strict": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "allowJs": true,
-    "checkJs": false,
-    "moduleResolution": "node",
     "esModuleInterop": true,
-    "removeComments": false,
-    "noUncheckedIndexedAccess": true
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    /* If transpiling with TypeScript: */
+    "module": "NodeNext",
+    "sourceMap": true,
+    /* AND if you're building for a library: */
+    "declaration": true,
+    /* If your code runs in the DOM: */
+    "lib": ["es2022", "dom", "dom.iterable"]
   },
   "include": ["src", "test"]
 }

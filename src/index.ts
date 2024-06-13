@@ -1,3 +1,3 @@
-import createTRPCMsw from './createTRPCMsw'
+import createTRPCMsw from './createTRPCMsw.js'
 
 export { createTRPCMsw }

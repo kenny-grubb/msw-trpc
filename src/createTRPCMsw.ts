@@ -3,7 +3,7 @@ import { defaultTransformer } from '@trpc/server/unstable-core-do-not-import'
 import { getHTTPStatusCodeFromError } from '@trpc/server/http'
 
 import { HttpResponse, http } from 'msw'
-import { MswTrpc } from './types'
+import { type MswTrpc } from './types.js'
 import { TRPC_ERROR_CODES_BY_KEY, TRPC_ERROR_CODE_KEY } from '@trpc/server/rpc'
 
 const getQueryInput = (req: Request, transformer: TRPCCombinedDataTransformer) => {
@@ -39,7 +39,7 @@ const createUntypedTRPCMsw = (
     basePath = 'trpc',
     transformer = defaultTransformer,
   }: { baseUrl?: string; basePath?: string; transformer?: TRPCCombinedDataTransformer } = {},
-  pathParts: string[] = []
+  pathParts: string[] = [],
 ) => {
   return new Proxy(
     {},
@@ -73,7 +73,7 @@ const createUntypedTRPCMsw = (
                   }
                   return HttpResponse.json({ error: transformer.output.serialize(jsonError) }, { status })
                 }
-              }
+              },
             )
         }
 
@@ -81,12 +81,12 @@ const createUntypedTRPCMsw = (
           pathParts.length === 0 ? (baseUrl != null ? [baseUrl] : [`\/${basePath}` as string]) : pathParts
         return createUntypedTRPCMsw({ transformer }, [...newPathParts, procedureKey as string])
       },
-    }
+    },
   )
 }
 
 const createTRPCMsw = <Router extends AnyTRPCRouter>(
-  config: { baseUrl?: string; basePath?: string; transformer?: TRPCCombinedDataTransformer } = {}
+  config: { baseUrl?: string; basePath?: string; transformer?: TRPCCombinedDataTransformer } = {},
 ) => {
   return createUntypedTRPCMsw(config) as MswTrpc<Router>
 }
